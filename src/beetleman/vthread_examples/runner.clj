@@ -64,7 +64,7 @@
   (System/gc))
 
 (defn run-vthreads! [f]
-  (run-executor! "VTHREADS" (fn [] vthreads-executor) f 1000))
+  (run-executor! "VTHREADS" (fn [] vthreads-executor) f 2000))
 
 (defn run-threads! [f]
-  (run-executor! "THREADS" (fn [] threads-executor) f 1000))
+  (run-executor! "THREADS" (fn [] threads-executor) f 2000))
