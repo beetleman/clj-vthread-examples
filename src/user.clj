@@ -17,17 +17,15 @@
     (runner/run-threads! http-kit/http-call))
 
 
+  (letfn  [(noop [] (Thread/sleep 1000))]
+    (runner/run-vthreads! noop)
+    (runner/run-threads! noop))
 
+
+  ;;TODO: SHOW max_connections;
   (do
-    (letfn  [(noop [] (Thread/sleep 1000))]
-      (runner/run-vthreads! noop)
-      (runner/run-threads! noop))
-
-
-    ;;TODO: SHOW max_connections;
-    (do
-      (runner/run-vthreads! pg/run-query)
-      (runner/run-threads! pg/run-query)))
+    (runner/run-vthreads! pg/run-query)
+    (runner/run-threads! pg/run-query))
 
 
   )
